@@ -22,8 +22,8 @@ def dsbRK4(y0, f, D, n, h):
     import numpy as np
 
     #Initializes the multi-dimensional array for solving the system of ODEs. The first 
-    y = np.empty(shape = (n+1, D))
-    t, dt = np.empty([n+1]), h
+    y = np.empty(shape = (n, D))
+    t, dt = np.empty([n]), h
 
     #Setting the initial conditions of the system
     if len(y0) < D: 
@@ -35,7 +35,7 @@ def dsbRK4(y0, f, D, n, h):
     else:    
         y[0] = y0
 
-    for i in range(0,n):
+    for i in range(0,n-1):
 
         #Solving for the coefficients
         k1 = dt*f(t[i], y[i])
